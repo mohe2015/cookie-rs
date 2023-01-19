@@ -4,10 +4,10 @@ use std::borrow::{Borrow, BorrowMut};
 use crate::secure::Key;
 use crate::{Cookie, CookieJar};
 
-use aes_gcm::Aes256Gcm;
-use aes_gcm::aead::{Aead, AeadInPlace, NewAead, generic_array::GenericArray, Payload};
+use self::aes_gcm::aead::{generic_array::GenericArray, Aead, AeadInPlace, KeyInit, Payload};
+use self::aes_gcm::Aes256Gcm;
+use self::rand::RngCore;
 use base64ct::{Base64, Encoding};
-use rand::RngCore;
 
 // Keep these in sync, and keep the key len synced with the `private` docs as
 // well as the `KEYS_INFO` const in secure::Key.
